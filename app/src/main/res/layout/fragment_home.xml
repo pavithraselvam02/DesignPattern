@@ -1,0 +1,425 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment"
+    android:background="@drawable/gradient_bg"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/locationImageView"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        app:srcCompat="@drawable/nav"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Rattha Tek Meadows"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@id/imageViewProfile"
+        app:layout_constraintStart_toEndOf="@id/locationImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp" />
+
+    <ImageView
+        android:id="@+id/imageViewProfile"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"/>
+
+    <LinearLayout
+        android:id="@+id/linearsearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/search_bg"
+        app:layout_constraintTop_toBottomOf="@id/imageViewProfile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <EditText
+            android:id="@+id/searchEditText"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:drawablePadding="10dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="56dp"
+            android:gravity="center_vertical"
+            android:hint="Search">
+        </EditText>
+
+        <ImageView
+            android:id="@+id/searchIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/search"
+            android:layout_gravity="center_vertical"
+            android:paddingEnd="8dp"/>
+
+        <ImageView
+            android:id="@+id/micIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/mic"
+            android:paddingEnd="10dp"
+            android:layout_gravity="center_vertical"
+            android:paddingStart="8dp"/>
+</LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/party"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/cele"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/linearsearch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+    <TextView
+        android:id="@+id/Welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome Pavithra"
+        android:fontFamily="@font/robotobold"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/party"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/freedelivery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enjoy flat 50% off + free delivery"
+        app:layout_constraintTop_toBottomOf="@+id/Welcome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
+        android:layout_width="360dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="26dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/freedelivery"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/orderfood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ORDER FOOD"
+                android:fontFamily="@font/robotobold"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="220dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/nearyou"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FROM GREAT RESTAURANTS NEAR YOU!"
+                android:textSize="10sp"
+                android:layout_marginEnd="120dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/orderfood" />
+
+            <TextView
+                android:id="@+id/mins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="30-40 Mins"
+                android:layout_marginEnd="230dp"
+                android:layout_marginTop="10dp"
+                android:textSize="10sp"
+                android:padding="10dp"
+                android:background="@drawable/mins"
+                app:layout_constraintTop_toBottomOf="@+id/nearyou"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/secondCardView"
+        android:layout_width="360dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/cardView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/instamart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="INSTAMART"
+                android:fontFamily="@font/robotobold"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="220dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/delivery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HOME NEEDS DELIVERED INSTANTLY"
+                android:textSize="10sp"
+                android:layout_marginEnd="120dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/instamart" />
+
+            <TextView
+                android:id="@+id/minss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10-12 Mins"
+                android:layout_marginEnd="230dp"
+                android:layout_marginTop="10dp"
+                android:textSize="10sp"
+                android:padding="10dp"
+                android:background="@drawable/mins"
+                app:layout_constraintTop_toBottomOf="@+id/delivery"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager2"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/leftCardView"
+        android:layout_width="170dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="4dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toStartOf="@id/rightCardView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/secondCardView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/leftCardContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="DINE OUT"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/imageViewEatOut"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/dish" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/eat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EAT OUT"
+            android:textSize="12sp"
+            android:layout_marginTop="34dp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/gray"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/rightCardView"
+        android:layout_width="170dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toBottomOf="@id/secondCardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/leftCardView" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/rightCardContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="GENIE"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"/>
+
+            <ImageView
+                android:id="@+id/imageViewDelivery"
+                android:layout_width="80dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/delivery" />
+
+</LinearLayout>
+        <TextView
+            android:id="@+id/pick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PICK-UP DROP"
+            android:textSize="12sp"
+            android:layout_marginTop="34dp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/gray"/>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/extraConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@color/homedisplay"
+        app:layout_constraintTop_toBottomOf="@id/rightCardView">
+
+        <TextView
+            android:id="@+id/Live"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Live"
+            android:textSize="60dp"
+            android:textColor="@color/gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/itup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="it up!"
+            android:textSize="60dp"
+            android:textColor="@color/gray"
+            app:layout_constraintTop_toBottomOf="@id/Live"
+            tools:ignore="MissingConstraints"/>
+
+        <LinearLayout
+            android:id="@+id/splitLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/itup"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="100dp"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/craftedTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crafted with"
+                android:textSize="18sp"
+                android:textColor="@color/gray"/>
+
+            <ImageView
+                android:id="@+id/imageViewSeparator"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/heart"/>
+
+            <TextView
+                android:id="@+id/locationTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="in Bengaluru, India"
+                android:textColor="@color/gray"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

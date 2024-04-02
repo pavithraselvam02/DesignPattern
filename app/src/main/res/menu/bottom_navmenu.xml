@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_home"
+        android:title="Home"
+        android:icon="@drawable/swiggy" />
+
+    <item
+        android:id="@+id/navigation_food"
+        android:title="Food"
+        android:icon="@drawable/chinese_bowl_svgrepo_com" />
+
+    <item
+        android:id="@+id/navigation_cart"
+        android:title="Instamart"
+        android:icon="@drawable/cart_download_svgrepo_com" />
+
+    <item
+        android:id="@+id/navigation_dine"
+        android:title="Dineout"
+        android:icon="@drawable/food_cover_svgrepo_com" />
+</menu>

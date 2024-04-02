@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashscreen">
+
+    <fragment
+        android:id="@+id/splashscreen"
+        android:name="com.example.designpattern.SplashScreenFragment"
+        tools:layout="@layout/fragment_splash_screen">
+        <action
+            android:id="@+id/action_splashscreen_to_loginFragment"
+            app:destination="@id/fragment_login"/>
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_login"
+        android:name="com.example.designpattern.LoginFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_profileFragment"
+            app:destination="@id/homeFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.designpattern.HomeFragment"
+        tools:layout="@layout/fragment_home"/>
+
+
+
+    <fragment
+        android:id="@+id/foodFragment"
+        android:name="com.example.designpattern.Food_navmenu_Fragment"
+        android:label="Food"
+        tools:layout="@layout/fragment_food_navmenu_"/>
+
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.example.designpattern.Instamart_navmenu_Fragment"
+        android:label="Instamart"
+        tools:layout="@layout/fragment_instamart_navmenu_"/>
+
+    <fragment
+        android:id="@+id/dineFragment"
+        android:name="com.example.designpattern.Dine_navmenu_Fragment"
+        android:label="Dineout"
+        tools:layout="@layout/fragment_dine_navmenu_"/>
+
+</navigation>
