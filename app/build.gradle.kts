@@ -55,5 +55,6 @@ dependencies {
     implementation ("androidx.navigation:navigation-ui-ktx:2.3.5")
     implementation ("com.google.dagger:hilt-android:2.51")
     kapt ("com.google.dagger:hilt-compiler:2.51")
+    implementation ("com.github.IslamKhSh:CardSlider:1.0.1")
 
 }

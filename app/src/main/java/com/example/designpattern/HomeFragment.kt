@@ -8,12 +8,13 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import android.widget.EditText
+import kotlin.random.Random
 
 class HomeFragment : Fragment() {
-
+    private var isUpdatingText = false
     private lateinit var viewPager: ViewPager2
     private lateinit var secondViewPager: ViewPager2
     private val handler = Handler(Looper.getMainLooper())
@@ -33,16 +34,45 @@ class HomeFragment : Fragment() {
         CarouselItem(R.drawable.onionn, "Onion")
     )
 
-    private val runnable = object : Runnable {
+    private val suggestions = mutableListOf<String>()
+    private val suggestionGenerator = Random(System.currentTimeMillis())
+
+    private val suggestionRunnable = object : Runnable {
         override fun run() {
             if (isAutoScrollEnabled) {
-                viewPager.setCurrentItem(currentPage++, true)
-                secondViewPager.setCurrentItem(currentPage++, true)
-                if (currentPage == viewPager.adapter?.itemCount) {
-                    currentPage = 0
-                }
+                updateSuggestion()
             }
             handler.postDelayed(this, delay)
+        }
+    }
+
+    private val textWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            // Not needed
+        }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            // Not needed
+        }
+
+        override fun afterTextChanged(s: Editable?) {
+            if (!isUpdatingText) {
+                isUpdatingText = true
+                // Clear previous suggestions
+                suggestions.clear()
+                // Add random suggestions
+                repeat(3) { // Adjust the number of suggestions here
+                    val randomIndex = suggestionGenerator.nextInt(secondCarouselItems.size)
+                    val randomItem = secondCarouselItems[randomIndex]
+                    suggestions.add(randomItem.description)
+                }
+                // Display the first suggestion
+                updateSuggestion()
+                // Remove the TextWatcher temporarily
+                val searchEditText = view?.findViewById<EditText>(R.id.searchEditText)
+                searchEditText?.removeTextChangedListener(this)
+                isUpdatingText = false
+            }
         }
     }
 
@@ -53,54 +83,6 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         viewPager = view.findViewById(R.id.viewPager)
         secondViewPager = view.findViewById(R.id.viewPager2)
-        val searchEditText: EditText = view.findViewById(R.id.searchEditText)
-
-// Set initial hint
-        searchEditText.hint = "Search for"
-
-// Example of dynamically updating the hint based on the selected item
-        val selectedItem = "Milk" // Change this to your selected item
-        searchEditText.hint = "Search for $selectedItem"
-
-// List of items to suggest
-        val suggestedItems = listOf("Bread", "Cheese", "Eggs", "Yogurt")
-
-// Set up text change listener for the searchEditText
-        searchEditText.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // Not used
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                // Not used
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                // Get the current text entered by the user
-                val searchText = s.toString().trim()
-
-                // Check if the user has entered something
-                if (searchText.isNotEmpty()) {
-                    // Check if the entered text matches any suggested items
-                    val matchedItems = suggestedItems.filter { it.contains(searchText, ignoreCase = true) }
-
-                    // Prepare the hint text with selected item and suggested items
-                    val hint = if (matchedItems.isNotEmpty()) {
-                        val suggestedItemsText = matchedItems.joinToString(", ")
-                        "Search for $selectedItem, e.g. $suggestedItemsText"
-                    } else {
-                        "Search for $selectedItem"
-                    }
-
-                    // Update the hint text
-                    searchEditText.hint = hint
-                } else {
-                    // If the user clears the text, revert to default hint
-                    searchEditText.hint = "Search for $selectedItem"
-                }
-            }
-        })
-
 
         viewPager.clipToPadding = false
         val padding = resources.getDimensionPixelSize(R.dimen.viewpager_padding)
@@ -131,24 +113,46 @@ class HomeFragment : Fragment() {
             isAutoScrollEnabled = !isAutoScrollEnabled
         }
 
+        val searchEditText = view.findViewById<EditText>(R.id.searchEditText)
+        searchEditText.addTextChangedListener(textWatcher)
+
         return view
     }
 
     override fun onResume() {
         super.onResume()
         startViewPagerAutoScroll()
+        handler.postDelayed(suggestionRunnable, delay)
     }
 
     override fun onPause() {
         super.onPause()
         stopViewPagerAutoScroll()
+        handler.removeCallbacks(suggestionRunnable)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        val searchEditText = view?.findViewById<EditText>(R.id.searchEditText)
+        searchEditText?.removeTextChangedListener(textWatcher)
     }
 
     private fun startViewPagerAutoScroll() {
-        handler.postDelayed(runnable, delay)
+        handler.postDelayed(suggestionRunnable, delay)
     }
 
     private fun stopViewPagerAutoScroll() {
-        handler.removeCallbacks(runnable)
+        handler.removeCallbacks(suggestionRunnable)
+    }
+
+    private fun updateSuggestion() {
+        if (suggestions.isNotEmpty()) {
+            val currentSuggestion = suggestions.first()
+            val searchEditText = view?.findViewById<EditText>(R.id.searchEditText)
+            searchEditText?.apply {
+                text = null
+                append(currentSuggestion)
+            }
+        }
     }
 }
